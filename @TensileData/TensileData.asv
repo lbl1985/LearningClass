@@ -1,0 +1,37 @@
+classdef TensileData
+    %TENSILEDATA Summary of this class goes here
+    %   Detailed explanation goes here
+    
+    properties
+        Material = 'carbon steel';
+        SampleNumber = 0;
+        Stress;
+        Strain;
+    end
+    
+    properties (Dependent = true, SetAccess = private)
+        Modulus;
+    end
+    
+    methods
+        
+        function td = TensileData(material, samplenum, stress, strain)
+            if nargin > 0
+                td.Material = material;
+                td.SampleNumber = samplenum;
+                td.Stress = stress;
+                td.Strain = strain;
+            end
+        end
+        function modulus = get.Modulus(obj)
+            
+        function obj = set.Material(obj, material)
+            if ~(strcmpi(material, 'aluminum') || ...
+                strcmpi(material, 'stainless steel') || ...
+                strcmpi(material, 'carbon steel'))
+                error('Material must be aluminum, stainless steel, or carbon steel');
+            end
+        end
+    end    
+end
+
