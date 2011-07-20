@@ -38,6 +38,8 @@ classdef TensileData
                 strcmpi(material, 'stainless steel') || ...
                 strcmpi(material, 'carbon steel'))
                 error('Material must be aluminum, stainless steel, or carbon steel');
+            else
+                obj.Material = material;
             end
         end
         
